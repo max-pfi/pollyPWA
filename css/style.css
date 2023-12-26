@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.homeScreenContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topNav {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.addPollButton {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #c9c9c9;
+    font-weight: 600;
+}
+
+.addPollButton img {
+    width: 20px;
+    margin-left: 10px;
+}
+
+#cardContainer {
+    height: calc(100vh - 140px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.bottomNav {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    flex-direction: row;
+    background: #e6e6e6;
+    align-items: center;
+}
+
+.bottomNavItem {
+    width: 60px;
+    height: 35px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomNavItem img {
+    height: 25px;
+}
+
+.activeNavItem {
+    background-color: #f4d7d7;
+}
+
+#bigCard {
+    width: 100%;
+    height: 100%;
+    background: rgb(80, 124, 195);
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+}
+
+#bigCardHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#bigCardHeader img {
+    width: 30px;
+}
+
+#bigCardHeaderLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#bigCardHeaderLeft div {
+    margin-bottom: 4px;
+}
+
+#bigCardQuestion {
+    font-size: 2.7rem;
+    font-weight: 700;
+    border-left: 4px solid white;
+    padding: 0 0 0 30px;
+}
+
+#bigCardAnswers {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#skipButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+#answerCard {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#answerCardText {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#answerCardPercent {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#answerCardTag {
+    background: rgb(209, 152, 72);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+
+
+.displayFlex {
+    display: flex;
+}
+
+.displayNone {
+    display: none;
+}
+
+
+
+
+

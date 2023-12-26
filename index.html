@@ -1,0 +1,106 @@
+<!--
+AUTHORS: Müslüm Atas & Mathias Knoll
+DESCRIPTION: A simple Progressive Web App (PWA) example which uses web- and service-workers. 
+             It consists of HTML files (index.html, next.html) with basic CSS styling (style.css), a few images, and scripts.
+LAST CHANGE: 17.10.2023
+REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Polly</title>
+
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Manifest and Styles
+	  The manifest file lists all the information about the website in a JSON format und usually resides in the root folder of a web app -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- App Name -->
+  <meta name="polly" content="polly" />
+  <!-- On iOS, you can specify a web application title for the launch icon -->
+  <meta name="polly" content="polly" />
+  <!-- Capability -->
+  <meta name="polly" content="yes" />
+  <!-- Hiding Safari User Interface Components in standalone mode-->
+  <meta name="polly" content="yes" />
+  <!-- Starting URL -->
+  <meta name="msapplication-starturl" content="/index.html" />
+  <!-- Theme/Display -->
+  <meta name="theme-color" content="white" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Icon for iOS 180x180 -->
+  <link rel="apple-touch-icon" href="img/touch-icon-iphone.png">
+  <!-- Splash Screens for iOS -->
+  <link href="img/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+  <link href="img/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+</head>
+
+<body>
+  <div class="homeScreenContainer">
+    <div class="topNav">
+      <h1>Polly</h1>
+      <div class="addPollButton">
+        <div>add poll</div>
+        <img src="img/add.svg" alt="add poll">
+      </div>
+    </div>
+    <div id="cardContainer">
+      <div id="bigCard" class="displayNone">
+        <div id="bigCardHeader">
+          <div id="bigCardHeaderLeft">
+            <div id="bigCardName">Sally</div>
+            <div id="bigCardVotes">150 votes</div>
+          </div>
+          <img id="bigCardPinButton" src="img/simple_pin_outline.svg">
+        </div>
+        <div id="bigCardQuestion">Should I invest in crypto or real estate</div>
+        <div>
+          <div id="bigCardAnswers">
+            <div id="bigCardAnswerOne">Crypto</div>
+            <div id="bigCardAnswerTwo">Real Estate</div>
+          </div>
+          <div id="skipButton">skip</div>
+        </div>
+      </div>
+      <div id="answerCard" class="displayFlex">
+        <div id="answerCardText">
+          Crypto
+        </div>
+        <div id="answerCardPercent">
+          25%
+        </div>
+        <div id="answerCardTag">
+          minority
+        </div>
+      </div>
+    </div>
+    <div class="bottomNav">
+      <div class="bottomNavItem activeNavItem" >
+        <img src="img/home.svg" alt="home">
+      </div>
+      <div class="bottomNavItem">
+        <img src="img/pin.svg" alt="pin">
+      </div>
+      <div class="bottomNavItem">
+        <img src="img/profile.svg" alt="profile">
+      </div>
+    </div>
+  </div>
+
+  <input class="custom_button" type=button onClick="parent.location='next.html'" value='Next'>
+
+  <!-- Scripts -->
+  <script src="use_webworker.js"></script>
+  <script src="use_serviceworker.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
