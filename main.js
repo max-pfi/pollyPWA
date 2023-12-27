@@ -41,7 +41,7 @@ async function getData(onDataFetchedCallback) {
     } else {
         worker.postMessage("init")
     }
-    
+
 }
 
 worker.onmessage = function (event) {
@@ -58,6 +58,19 @@ function getFromLocalStorage() {
     currentCard = localStorage.getItem("currentCard")
     seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
     user = JSON.parse(localStorage.getItem("user"))
+}
+
+function updateUser() {
+    localStorage.setItem("user", JSON.stringify(user))
+}
+
+function updateCards() {
+    localStorage.setItem("seenPolls", JSON.stringify(seenPolls))
+    localStorage.setItem("pollList", JSON.stringify(pollList))
+}
+
+function updateCurrentCard() {
+    localStorage.setItem("currentCard", currentCard)
 }
 
 function updateLocalStorage() {

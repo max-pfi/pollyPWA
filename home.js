@@ -68,7 +68,7 @@ function addVote(voteOption) {
                 answerCardText.textContent = poll.answerTwo
             }
             seenPolls.push(currentCard)
-            updateLocalStorage()
+            updateCards()
             const voteCount = poll.votesOne + poll.votesTwo
             const votePercent = Math.round((voteOption == 1 ? poll.votesOne : poll.votesTwo) / voteCount * 100)
             answerCardPercent.textContent = votePercent + "%"
@@ -105,7 +105,7 @@ function getNextCard() {
     if (nextPoll !== undefined) {
         console.log("next card: ", nextPoll.question)
         currentCard = nextPoll.id
-        updateLocalStorage()
+        updateCurrentCard()
         setBigCardData()
         showQuestionCard()
         return
