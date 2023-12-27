@@ -29,19 +29,19 @@ let onDataFetched = null
 const worker = new Worker("webworker.js")
 
 async function getData(onDataFetchedCallback) {
+
     onDataFetched = onDataFetchedCallback
+
     if (localStorage.getItem("pollList") !== null
         && localStorage.getItem("currentCard") !== null
         && localStorage.getItem("seenPolls") !== null
         && localStorage.getItem("user") !== null) {
-        pollList = JSON.parse(localStorage.getItem("pollList"))
-        currentCard = localStorage.getItem("currentCard")
-        seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
-        user = JSON.parse(localStorage.getItem("user"))
+        getFromLocalStorage()
         onDataFetched()
     } else {
         worker.postMessage("init")
     }
+    
 }
 
 worker.onmessage = function (event) {
@@ -51,6 +51,13 @@ worker.onmessage = function (event) {
     seenPolls = []
     updateLocalStorage()
     onDataFetched()
+}
+
+function getFromLocalStorage() {
+    pollList = JSON.parse(localStorage.getItem("pollList"))
+    currentCard = localStorage.getItem("currentCard")
+    seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
+    user = JSON.parse(localStorage.getItem("user"))
 }
 
 function updateLocalStorage() {
