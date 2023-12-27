@@ -1,0 +1,76 @@
+.topNavWithBackButton {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    padding: 10px 20px;
+    align-items: center;
+    column-gap: 30px;
+}
+
+#question {
+    height: 400px;
+    width: auto;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+.addPollContainer {
+    flex-direction: column;
+    display: flex;
+    margin: 40px 20px;
+    row-gap: 10px;
+}
+
+#answerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 30px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#answerInput1, #answerInput2 {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+}
+
+.addPollInput {
+    background-color: rgba(210, 158, 55, 1);
+    color:    white;
+    align-items: center;
+    font-size: 16px;
+    padding-left: 10px;
+    border-color: transparent;
+}
+
+::-webkit-input-placeholder { 
+    color:    white;
+}
+
+.color {
+    background-color: rgba(210, 158, 55, 1);
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+#colorPalette {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+#submitPoll {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+}
