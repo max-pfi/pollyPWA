@@ -47,7 +47,7 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     <body>
         <div class="homeScreenContainer">
             <div class="topNavWithBackButton">
-                <div>
+                <div onClick="parent.location='index.html'">
                     <img src="img/back.svg" alt="add poll">
                 </div>
                 <h1>Create Poll</h1>
@@ -84,7 +84,6 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     <!-- Scripts -->
         <script src="use_serviceworker.js"></script>
         <script src="main.js"></script>
-        <script src="app.js"></script>
         <script src="addPoll.js"></script>
     </body>
 </html>
