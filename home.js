@@ -42,6 +42,17 @@ function finishSetup() {
     elements.bigCardAnswerOne.addEventListener("click", function () { onCardFinished(1) })
     elements.bigCardAnswerTwo.addEventListener("click", function () { onCardFinished(2) })
     elements.outOfPollsButton.addEventListener("click", function () { resetPolls() })
+    elements.skipButton.addEventListener("click", function () {
+        addPollToSeen() 
+        getNextCard()
+        updateCards()
+        if(currentCard == -1) {
+            showOutOfQuestions()
+        } else {
+            setCardData()
+            showQuestionCard()
+        }
+    })
     elements.bigCardPinButton.addEventListener("click", function () { 
         addPollToSeen(true)
         setCardData()
