@@ -1,4 +1,5 @@
 let pollList = []
+let seenPolls = []
 let elements = {}
 let currentCard = null;
 let initComplete = false;
@@ -7,10 +8,14 @@ let onLoadComplete = false;
 const worker = new Worker("webworker.js")
 
 // setup: take data from localstorage or use worker to fetch data from file
-if (localStorage.getItem("pollList") !== null && localStorage.getItem("currentCard") !== null) {
+if (localStorage.getItem("pollList") !== null
+    && localStorage.getItem("currentCard") !== null
+    && localStorage.getItem("seenPolls") !== null) {
     pollList = JSON.parse(localStorage.getItem("pollList"))
     currentCard = localStorage.getItem("currentCard")
+    seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
     initComplete = true
+    console.log("finished initalizing from localstorage")
     finishSetup()
 } else {
     worker.postMessage("init")
@@ -18,8 +23,9 @@ if (localStorage.getItem("pollList") !== null && localStorage.getItem("currentCa
 
 // after init from worker is done
 worker.onmessage = function (event) {
-    pollList = event.data
-    currentCard = 0
+    pollList = event.data.polls
+    currentCard = 1
+    seenPolls = []
     updateLocalStorage()
     initComplete = true
     finishSetup()
@@ -58,33 +64,43 @@ function getElementsById(ids) {
 }
 
 function setBigCardData() {
-    const voteCount = pollList[currentCard].votesOne + pollList[currentCard].votesTwo
+    console.log("current card: ", currentCard)
+    const cardData = pollList.find((poll) => { 
+        console.log("poll id: ", poll.id)
+        return (poll.id == currentCard)
+     })
+    const voteCount = cardData.votesOne + cardData.votesTwo
     const voteCountString = voteCount + " votes"
-    elements.bigCardName.textContent = pollList[currentCard].userName;
+
+    elements.bigCardName.textContent = cardData.userName;
     elements.bigCardVotes.textContent = voteCountString;
-    elements.bigCardQuestion.textContent = pollList[currentCard].question;
-    elements.bigCardAnswerOne.textContent = pollList[currentCard].answerOne;
-    elements.bigCardAnswerTwo.textContent = pollList[currentCard].answerTwo;
+    elements.bigCardQuestion.textContent = cardData.question;
+    elements.bigCardAnswerOne.textContent = cardData.answerOne;
+    elements.bigCardAnswerTwo.textContent = cardData.answerTwo;
+    elements.bigCard.style.background = cardData.color;
 }
 
 function addVote(voteOption) {
     pollList.forEach((poll) => {
-        if (poll.id === pollList[currentCard].id) {
-            if (voteOption === 1) {
+        if (poll.id == currentCard) {
+            if (voteOption == 1) {
                 poll.votesOne++
                 answerCardText.textContent = poll.answerOne
             } else {
                 poll.votesTwo++
                 answerCardText.textContent = poll.answerTwo
             }
+            seenPolls.push(currentCard)
             updateLocalStorage()
             const voteCount = poll.votesOne + poll.votesTwo
-            const votePercent = Math.round((voteOption === 1 ? poll.votesOne : poll.votesTwo) / voteCount * 100)
+            const votePercent = Math.round((voteOption == 1 ? poll.votesOne : poll.votesTwo) / voteCount * 100)
             answerCardPercent.textContent = votePercent + "%"
-            if(votePercent > 50) {
+            if (votePercent > 50) {
                 answerCardTag.textContent = "majority"
+                answerCardTag.style.background = "rgb(101 129 35)"
             } else {
                 answerCardTag.textContent = "minority"
+                answerCardTag.style.background = "rgb(170 106 48)"
             }
             showAnswerCard(voteOption)
             return;
@@ -92,18 +108,47 @@ function addVote(voteOption) {
     })
 }
 
-function showAnswerCard(voteOption) {
-    bigCard.classList.remove("displayFlex");
-    bigCard.classList.add("displayNone");
-    answerCard.classList.remove("displayNone");
-    answerCard.classList.add("displayFlex");
+async function showAnswerCard(voteOption) {
+    answerCard.style.display = "flex"
+    bigCard.style.display = "none"
+    setTimeout(function () {
+        console.log("getting next card")
+        getNextCard()
+    }, 500);   
+}
+
+function showQuestionCard() {
+    answerCard.style.display = "none"
+    bigCard.style.display = "flex"
+}
+
+function getNextCard() {
+    pollList = shuffle(pollList)
+    const nextPoll = pollList.find((poll, index) => {return !seenPolls.includes(poll.id)})
+    if(nextPoll !== undefined) {
+        console.log("next card: ", nextPoll.question)
+        currentCard = nextPoll.id
+        updateLocalStorage()
+        setBigCardData()
+        showQuestionCard()
+        return
+    }
 }
 
 function updateLocalStorage() {
     localStorage.setItem("pollList", JSON.stringify(pollList))
     localStorage.setItem("currentCard", currentCard)
+    localStorage.setItem("seenPolls", JSON.stringify(seenPolls))
 }
 
+//algorithm from https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+function shuffle(list) {
+    for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
+}
 
 
 

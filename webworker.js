@@ -4,15 +4,22 @@ DESCRIPTION: The implementation of webworker.
 LAST CHANGE: 17.10.2023
 */
 
-self.addEventListener("message", function(messageEvent) {
-  
+self.addEventListener("message", function (messageEvent) {
   if (messageEvent.data === "init") {
-    fetch('data.json')
+    getData()
+  }
+});
+
+
+async function getData() {
+  let returnData = {
+    polls: [],
+  }
+  await fetch('data_polls.json')
     .then(response => response.json())
     .then(data => {
-        self.postMessage(data)
+      returnData.polls = data
     })
     .catch(error => console.error('Error:', error))
-  }
-
-});
+  self.postMessage(returnData)
+}

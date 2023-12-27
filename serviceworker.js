@@ -27,7 +27,7 @@ var filesToCache = [
   //'css/style.css',
   'use_webworker.js',
   'use_serviceworker.js',
-  'webworker.js',
+  //'webworker.js',
   'serviceworker.js',
   'main.js',
   'manifest.json'
