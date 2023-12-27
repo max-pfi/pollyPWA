@@ -17,7 +17,8 @@ window.onload = function () {
         "bigCardQuestion",
         "bigCardAnswerOne",
         "bigCardAnswerTwo",
-        "skipButton", "answerCard",
+        "skipButton", 
+        "answerCard",
         "answerCardText",
         "answerCardTag",
         "answerCardPercent",
@@ -38,15 +39,14 @@ function getElementsById(ids) {
 
 function finishSetup() {
     if (!initComplete || !onLoadComplete) return
-    elements.bigCardAnswerOne.addEventListener("click", function () { 
-        console.log("click")
-        onCardFinished(1) 
-    })
-    elements.bigCardAnswerTwo.addEventListener("click", function () { 
-        console.log("click")
-        onCardFinished(2) 
-    })
+    elements.bigCardAnswerOne.addEventListener("click", function () { onCardFinished(1) })
+    elements.bigCardAnswerTwo.addEventListener("click", function () { onCardFinished(2) })
     elements.outOfPollsButton.addEventListener("click", function () { resetPolls() })
+    elements.bigCardPinButton.addEventListener("click", function () { 
+        addPollToSeen(true)
+        setCardData()
+        updateCards()
+    })
     if(currentCard != -1) {
         setCardData()
     } else {
@@ -58,14 +58,22 @@ function setCardData() {
     const cardData = pollList.find((poll) => {
         return (poll.id == currentCard)
     })
+    let pinned = false 
+    for(poll of seenPolls) { 
+        if(poll.id == currentCard) {
+            pinned = poll.pinned
+            break
+        }
+    }
     const voteCount = cardData.votesOne + cardData.votesTwo
     const voteCountString = voteCount + " votes"
-    elements.bigCardName.textContent = cardData.userName;
-    elements.bigCardVotes.textContent = voteCountString;
-    elements.bigCardQuestion.textContent = cardData.question;
-    elements.bigCardAnswerOne.textContent = cardData.answerOne;
-    elements.bigCardAnswerTwo.textContent = cardData.answerTwo;
-    elements.bigCard.style.background = cardData.color;
+    elements.bigCardName.textContent = cardData.userName
+    elements.bigCardVotes.textContent = voteCountString
+    elements.bigCardQuestion.textContent = cardData.question
+    elements.bigCardAnswerOne.textContent = cardData.answerOne
+    elements.bigCardAnswerTwo.textContent = cardData.answerTwo
+    elements.bigCard.style.background = cardData.color
+    elements.bigCardPinButton.src = pinned ? "img/simple_pin_filled.svg" : "img/simple_pin_outline.svg"
 }
 
 function onCardFinished(voteOption) {
@@ -89,7 +97,7 @@ function onCardFinished(voteOption) {
                 answerCardTag.textContent = "minority"
                 answerCardTag.style.background = "rgb(170 106 48)"
             }
-            seenPolls.push(currentCard)
+            addPollToSeen()
             getNextCard()
             updateCards()
             showAnswerCard()
@@ -133,10 +141,9 @@ function resetPolls() {
 }
 
 function getNextCard() {
-    console.log("pollList: ", pollList)
-    console.log("seenPolls: ", seenPolls)
     pollList = shuffle(pollList)
-    const nextPoll = pollList.find((poll) => { return !seenPolls.includes(poll.id) })
+    const seenPollIds = seenPolls.map((poll) => { return poll.id })
+    const nextPoll = pollList.find((poll) => { return !seenPollIds.includes(poll.id) })
     if (nextPoll !== undefined) {
         currentCard = nextPoll.id
     } else {
@@ -144,7 +151,19 @@ function getNextCard() {
     }
 }
 
-
+function addPollToSeen(toggle = false) {
+    for(const seenPoll of seenPolls) {
+        if(seenPoll.id == currentCard) {
+            if(toggle) {
+                seenPoll.pinned = !seenPoll.pinned
+            }
+            return
+        }
+    }
+    seenPolls.push({
+        id: currentCard, 
+        pinned: toggle})
+}
 
 //algorithm from https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
 function shuffle(list) {
@@ -154,8 +173,3 @@ function shuffle(list) {
     }
     return list;
 }
-
-
-
-
-
