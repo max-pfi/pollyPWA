@@ -8,7 +8,7 @@ LAST CHANGE: 17.10.2023
 // Detects if device is on iOS
 const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
+    return /iphone|ipad|ipod/.test(userAgent);
 }
 // Detects if device is in standalone mode
 const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
@@ -17,3 +17,47 @@ const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.n
 if (isIos() && !isInStandaloneMode()) {
     this.setState({ showInstallMessage: true });
 }
+
+
+let pollList = []
+let seenPolls = []
+let elements = {}
+let currentCard = null
+let user = null
+let onDataFetched = null
+
+const worker = new Worker("webworker.js")
+
+async function getData(onDataFetchedCallback) {
+    onDataFetched = onDataFetchedCallback
+    if (localStorage.getItem("pollList") !== null
+        && localStorage.getItem("currentCard") !== null
+        && localStorage.getItem("seenPolls") !== null
+        && localStorage.getItem("user") !== null) {
+        pollList = JSON.parse(localStorage.getItem("pollList"))
+        currentCard = localStorage.getItem("currentCard")
+        seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
+        user = JSON.parse(localStorage.getItem("user"))
+        onDataFetched()
+    } else {
+        worker.postMessage("init")
+    }
+}
+
+worker.onmessage = function (event) {
+    pollList = event.data.polls
+    user = event.data.user
+    currentCard = 1
+    seenPolls = []
+    updateLocalStorage()
+    onDataFetched()
+}
+
+function updateLocalStorage() {
+    localStorage.setItem("pollList", JSON.stringify(pollList))
+    localStorage.setItem("currentCard", currentCard)
+    localStorage.setItem("user", JSON.stringify(user))
+    localStorage.setItem("seenPolls", JSON.stringify(seenPolls))
+}
+
+

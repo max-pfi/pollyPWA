@@ -1,35 +1,12 @@
-let pollList = []
-let seenPolls = []
-let elements = {}
-let currentCard = null;
 let initComplete = false;
 let onLoadComplete = false;
 
-const worker = new Worker("webworker.js")
-
-// setup: take data from localstorage or use worker to fetch data from file
-if (localStorage.getItem("pollList") !== null
-    && localStorage.getItem("currentCard") !== null
-    && localStorage.getItem("seenPolls") !== null) {
-    pollList = JSON.parse(localStorage.getItem("pollList"))
-    currentCard = localStorage.getItem("currentCard")
-    seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
-    initComplete = true
-    console.log("finished initalizing from localstorage")
-    finishSetup()
-} else {
-    worker.postMessage("init")
-}
-
-// after init from worker is done
-worker.onmessage = function (event) {
-    pollList = event.data.polls
-    currentCard = 1
-    seenPolls = []
-    updateLocalStorage()
+const onDataFeteched = () => {
     initComplete = true
     finishSetup()
 }
+
+getData(onDataFeteched)
 
 window.onload = function () {
     let ids = [
@@ -65,10 +42,10 @@ function getElementsById(ids) {
 
 function setBigCardData() {
     console.log("current card: ", currentCard)
-    const cardData = pollList.find((poll) => { 
+    const cardData = pollList.find((poll) => {
         console.log("poll id: ", poll.id)
         return (poll.id == currentCard)
-     })
+    })
     const voteCount = cardData.votesOne + cardData.votesTwo
     const voteCountString = voteCount + " votes"
 
@@ -114,7 +91,7 @@ async function showAnswerCard(voteOption) {
     setTimeout(function () {
         console.log("getting next card")
         getNextCard()
-    }, 500);   
+    }, 500);
 }
 
 function showQuestionCard() {
@@ -124,8 +101,8 @@ function showQuestionCard() {
 
 function getNextCard() {
     pollList = shuffle(pollList)
-    const nextPoll = pollList.find((poll, index) => {return !seenPolls.includes(poll.id)})
-    if(nextPoll !== undefined) {
+    const nextPoll = pollList.find((poll, index) => { return !seenPolls.includes(poll.id) })
+    if (nextPoll !== undefined) {
         console.log("next card: ", nextPoll.question)
         currentCard = nextPoll.id
         updateLocalStorage()
@@ -135,11 +112,7 @@ function getNextCard() {
     }
 }
 
-function updateLocalStorage() {
-    localStorage.setItem("pollList", JSON.stringify(pollList))
-    localStorage.setItem("currentCard", currentCard)
-    localStorage.setItem("seenPolls", JSON.stringify(seenPolls))
-}
+
 
 //algorithm from https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
 function shuffle(list) {

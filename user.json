@@ -1,0 +1,25 @@
+{
+    "name": "John Doe",
+    "userPolls": [
+        {
+            "id": 1,
+            "question": "Should I go out with friends or stay at home and study?",
+            "color": "#D29E37",
+            "answerOne": "Go out",
+            "answerTwo": "Stay home",
+            "userName": "John",
+            "votesOne": 35,
+            "votesTwo": 15
+        },
+        {
+            "id": 2,
+            "question": "Should I buy the Fujifilm X100V or the Fujifilm XE4?",
+            "color": "#9D3E3E",
+            "answerOne": "X100V",
+            "answerTwo": "XE4",
+            "userName": "Jane",
+            "votesOne": 20,
+            "votesTwo": 50
+        }
+    ]
+}

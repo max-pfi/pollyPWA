@@ -14,11 +14,18 @@ self.addEventListener("message", function (messageEvent) {
 async function getData() {
   let returnData = {
     polls: [],
+    user: null,
   }
   await fetch('data_polls.json')
     .then(response => response.json())
     .then(data => {
       returnData.polls = data
+    })
+    .catch(error => console.error('Error:', error))
+  await fetch('user.json')
+    .then(response => response.json())
+    .then(data => {
+      returnData.user = data
     })
     .catch(error => console.error('Error:', error))
   self.postMessage(returnData)
