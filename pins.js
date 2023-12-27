@@ -32,6 +32,7 @@ function finishSetup() {
         showNoPinnedPolls()
     }
     for(const seenPoll of seenPolls) {
+        if(!seenPoll.pinned) continue
         for(const poll of pollList) {
             if(seenPoll.id == poll.id) {
                 const smallPinContainer = createSmallPinContainer(poll)
