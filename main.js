@@ -54,10 +54,10 @@ worker.onmessage = function (event) {
 }
 
 function getFromLocalStorage() {
-    pollList = JSON.parse(localStorage.getItem("pollList"))
-    currentCard = localStorage.getItem("currentCard")
-    seenPolls = JSON.parse(localStorage.getItem("seenPolls"))
-    user = JSON.parse(localStorage.getItem("user"))
+    pollList = JSON.parse(localStorage.getItem("pollList"));
+    currentCard = parseInt(localStorage.getItem("currentCard"));
+    seenPolls = JSON.parse(localStorage.getItem("seenPolls")).map(Number);
+    user = JSON.parse(localStorage.getItem("user"));
 }
 
 function updateUser() {
@@ -67,9 +67,6 @@ function updateUser() {
 function updateCards() {
     localStorage.setItem("seenPolls", JSON.stringify(seenPolls))
     localStorage.setItem("pollList", JSON.stringify(pollList))
-}
-
-function updateCurrentCard() {
     localStorage.setItem("currentCard", currentCard)
 }
 

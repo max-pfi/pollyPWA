@@ -21,17 +21,13 @@ window.onload = function () {
         "answerCardText",
         "answerCardTag",
         "answerCardPercent",
-        "cardId"];
+        "cardId",
+        "outOfPollsContainer",
+        "outOfPollsButton",
+    ];
     getElementsById(ids);
     onLoadComplete = true
     finishSetup()
-}
-
-function finishSetup() {
-    if (!initComplete || !onLoadComplete) return
-    elements.bigCardAnswerOne.addEventListener("click", function () { addVote(1) })
-    elements.bigCardAnswerTwo.addEventListener("click", function () { addVote(2) })
-    setBigCardData()
 }
 
 function getElementsById(ids) {
@@ -40,15 +36,30 @@ function getElementsById(ids) {
     })
 }
 
-function setBigCardData() {
-    console.log("current card: ", currentCard)
+function finishSetup() {
+    if (!initComplete || !onLoadComplete) return
+    elements.bigCardAnswerOne.addEventListener("click", function () { 
+        console.log("click")
+        onCardFinished(1) 
+    })
+    elements.bigCardAnswerTwo.addEventListener("click", function () { 
+        console.log("click")
+        onCardFinished(2) 
+    })
+    elements.outOfPollsButton.addEventListener("click", function () { resetPolls() })
+    if(currentCard != -1) {
+        setCardData()
+    } else {
+        showOutOfQuestions()
+    }
+}
+
+function setCardData() {
     const cardData = pollList.find((poll) => {
-        console.log("poll id: ", poll.id)
         return (poll.id == currentCard)
     })
     const voteCount = cardData.votesOne + cardData.votesTwo
     const voteCountString = voteCount + " votes"
-
     elements.bigCardName.textContent = cardData.userName;
     elements.bigCardVotes.textContent = voteCountString;
     elements.bigCardQuestion.textContent = cardData.question;
@@ -57,9 +68,10 @@ function setBigCardData() {
     elements.bigCard.style.background = cardData.color;
 }
 
-function addVote(voteOption) {
-    pollList.forEach((poll) => {
+function onCardFinished(voteOption) {
+    for(const poll of pollList) {
         if (poll.id == currentCard) {
+            console.log("running on Card finished: " + poll.id + " " + currentCard)
             if (voteOption == 1) {
                 poll.votesOne++
                 answerCardText.textContent = poll.answerOne
@@ -67,8 +79,6 @@ function addVote(voteOption) {
                 poll.votesTwo++
                 answerCardText.textContent = poll.answerTwo
             }
-            seenPolls.push(currentCard)
-            updateCards()
             const voteCount = poll.votesOne + poll.votesTwo
             const votePercent = Math.round((voteOption == 1 ? poll.votesOne : poll.votesTwo) / voteCount * 100)
             answerCardPercent.textContent = votePercent + "%"
@@ -79,36 +89,58 @@ function addVote(voteOption) {
                 answerCardTag.textContent = "minority"
                 answerCardTag.style.background = "rgb(170 106 48)"
             }
-            showAnswerCard(voteOption)
-            return;
+            seenPolls.push(currentCard)
+            getNextCard()
+            updateCards()
+            showAnswerCard()
+            break;
         }
-    })
+    }
 }
 
-async function showAnswerCard(voteOption) {
+async function showAnswerCard() {
     answerCard.style.display = "flex"
     bigCard.style.display = "none"
     setTimeout(function () {
-        console.log("getting next card")
-        getNextCard()
+        if(currentCard == -1) {
+            showOutOfQuestions()
+        } else {
+            setCardData()
+            showQuestionCard()
+        }
     }, 500);
 }
 
 function showQuestionCard() {
     answerCard.style.display = "none"
+    outOfPollsContainer.style.display = "none"
     bigCard.style.display = "flex"
 }
 
+function showOutOfQuestions() {
+    answerCard.style.display = "none"
+    bigCard.style.display = "none"
+    outOfPollsContainer.style.display = "flex"
+}
+
+function resetPolls() {
+    seenPolls = []
+    currentCard = 1
+    updateCards()
+    setCardData()
+    showQuestionCard()
+
+}
+
 function getNextCard() {
+    console.log("pollList: ", pollList)
+    console.log("seenPolls: ", seenPolls)
     pollList = shuffle(pollList)
-    const nextPoll = pollList.find((poll, index) => { return !seenPolls.includes(poll.id) })
+    const nextPoll = pollList.find((poll) => { return !seenPolls.includes(poll.id) })
     if (nextPoll !== undefined) {
-        console.log("next card: ", nextPoll.question)
         currentCard = nextPoll.id
-        updateCurrentCard()
-        setBigCardData()
-        showQuestionCard()
-        return
+    } else {
+        currentCard = -1
     }
 }
 
