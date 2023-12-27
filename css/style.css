@@ -168,3 +168,13 @@ h1 {
     border-radius: 10px;
     font-weight: 600;
 }
+
+.topNavWithBackButton {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    padding: 10px 20px;
+    align-items: center;
+    column-gap: 30px;
+}
