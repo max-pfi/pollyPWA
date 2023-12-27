@@ -26,17 +26,17 @@ function getElementsById(ids) {
 
 function finishSetup() {
     if (!initComplete || !onLoadComplete) return
+    seenPolls.sort((a, b) => new Date(b.time) - new Date(a.time));
     const seenPollIds = seenPolls.filter(poll => poll.pinned).map(poll => poll.id)
     if(seenPollIds.length == 0) {
-
+        showNoPinnedPolls()
     }
-    console.log("polls: ", pollList)
-    for (const poll of pollList) {
-        console.log("poll.id: ", poll.id)
-        if (seenPollIds.includes(poll.id)) {
-            console.log("appending poll: ", poll.id)
-            const smallPinContainer = createSmallPinContainer(poll)
-            elements.pinContainer.appendChild(smallPinContainer)
+    for(const seenPoll of seenPolls) {
+        for(const poll of pollList) {
+            if(seenPoll.id == poll.id) {
+                const smallPinContainer = createSmallPinContainer(poll)
+                elements.pinContainer.appendChild(smallPinContainer)
+            }
         }
     }
 }

@@ -157,12 +157,14 @@ function addPollToSeen(toggle = false) {
             if(toggle) {
                 seenPoll.pinned = !seenPoll.pinned
             }
+            seenPoll.time = new Date()
             return
         }
     }
     seenPolls.push({
         id: currentCard, 
-        pinned: toggle})
+        pinned: toggle,
+        time: new Date()})
 }
 
 //algorithm from https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
