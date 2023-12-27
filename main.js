@@ -56,7 +56,7 @@ worker.onmessage = function (event) {
 function getFromLocalStorage() {
     pollList = JSON.parse(localStorage.getItem("pollList"));
     currentCard = parseInt(localStorage.getItem("currentCard"));
-    seenPolls = JSON.parse(localStorage.getItem("seenPolls")).map(Number);
+    seenPolls = JSON.parse(localStorage.getItem("seenPolls"));
     user = JSON.parse(localStorage.getItem("user"));
 }
 

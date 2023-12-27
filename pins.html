@@ -1,10 +1,3 @@
-<!--
-AUTHORS: Müslüm Atas & Mathias Knoll
-DESCRIPTION: A simple Progressive Web App (PWA) example which uses web- and service-workers. 
-             It consists of HTML files (index.html, next.html) with basic CSS styling (style.css), a few images, and scripts.
-LAST CHANGE: 17.10.2023
-REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,49 +39,16 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 <body>
   <div class="homeScreenContainer">
     <div class="topNav">
-      <h1>Polly</h1>
-      <div class="addPollButton">
-        <div>add poll</div>
-        <img src="img/add.svg" alt="add poll">
-      </div>
+      <h2>Pins</h2>
+      <div></div>
     </div>
     <div id="cardContainer">
-      <div id="bigCard" style="display: flex;">
-        <input type="hidden" id="cardId" value="be15d9bcejpp">
-        <div id="bigCardHeader">
-          <div id="bigCardHeaderLeft">
-            <div id="bigCardName"></div>
-            <div id="bigCardVotes"></div>
-          </div>
-          <img id="bigCardPinButton" src="img/simple_pin_outline.svg">
-        </div>
-        <div id="bigCardQuestion"></div>
-        <div>
-          <div id="bigCardAnswers">
-            <div id="bigCardAnswerOne"></div>
-            <div id="bigCardAnswerTwo"></div>
-          </div>
-          <div id="skipButton">skip</div>
-        </div>
-      </div>
-      <div id="answerCard" style="display: none;">
-        <div id="answerCardText">
-        </div>
-        <div id="answerCardPercent">
-        </div>
-        <div id="answerCardTag">
-        </div>
-      </div>
-      <div id="outOfPollsContainer" style="display: none;">
-        <div class="outOfPollsText">Out of Polls</div>
-        <div id="outOfPollsButton">reset Polls</div>
-      </div>
     </div>
     <div class="bottomNav">
-      <div class="bottomNavItem activeNavItem" >
-        <img src="img/home.svg" alt="home">
+      <div class="bottomNavItem" >
+        <img src="img/home.svg" alt="home" onClick="parent.location='index.html'">
       </div>
-      <div class="bottomNavItem" onClick="parent.location='pins.html'">
+      <div class="bottomNavItem activeNavItem">
         <img src="img/pin.svg" alt="pin">
       </div>
       <div class="bottomNavItem">
@@ -96,11 +56,11 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
       </div>
     </div>
   </div>
-
+  
   <!-- Scripts -->
   <script src="use_serviceworker.js"></script>
   <script src="main.js"></script>
-  <script src="home.js"></script>
+  <script src="pins.js"></script>
 </body>
 
 </html>
