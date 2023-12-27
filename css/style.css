@@ -264,3 +264,14 @@ h1 {
     width: 100vw;
 }
 
+
+
+.topNavWithBackButton {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    padding: 10px 20px;
+    align-items: center;
+    column-gap: 30px;
+}
