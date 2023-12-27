@@ -53,32 +53,30 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
       </div>
     </div>
     <div id="cardContainer">
-      <div id="bigCard" class="displayNone">
+      <div id="bigCard" class="displayFlex">
+        <input type="hidden" id="cardId" value="be15d9bcejpp">
         <div id="bigCardHeader">
           <div id="bigCardHeaderLeft">
-            <div id="bigCardName">Sally</div>
-            <div id="bigCardVotes">150 votes</div>
+            <div id="bigCardName"></div>
+            <div id="bigCardVotes"></div>
           </div>
           <img id="bigCardPinButton" src="img/simple_pin_outline.svg">
         </div>
-        <div id="bigCardQuestion">Should I invest in crypto or real estate</div>
+        <div id="bigCardQuestion"></div>
         <div>
           <div id="bigCardAnswers">
-            <div id="bigCardAnswerOne">Crypto</div>
-            <div id="bigCardAnswerTwo">Real Estate</div>
+            <div id="bigCardAnswerOne"></div>
+            <div id="bigCardAnswerTwo"></div>
           </div>
           <div id="skipButton">skip</div>
         </div>
       </div>
-      <div id="answerCard" class="displayFlex">
+      <div id="answerCard" class="displayNone">
         <div id="answerCardText">
-          Crypto
         </div>
         <div id="answerCardPercent">
-          25%
         </div>
         <div id="answerCardTag">
-          minority
         </div>
       </div>
     </div>
@@ -98,9 +96,9 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
   <input class="custom_button" type=button onClick="parent.location='next.html'" value='Next'>
 
   <!-- Scripts -->
-  <script src="use_webworker.js"></script>
   <script src="use_serviceworker.js"></script>
   <script src="main.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>

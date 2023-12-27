@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "question": "Should I go out with friends or stay at home and study?",
+        "color": "0xFFD29E37",
+        "answerOne": "Go out",
+        "answerTwo": "Stay home",
+        "userName": "John",
+        "votesOne": 35,
+        "votesTwo": 15
+    },
+    {
+        "id": 2,
+        "question": "Should I buy the Fujifilm X100V or the Fujifilm XE4?",
+        "color": "0xFF9D3E3E",
+        "answerOne": "X100V",
+        "answerTwo": "XE4",
+        "userName": "Jane",
+        "votesOne": 20,
+        "votesTwo": 50
+    },
+    {
+        "id": 3,
+        "question": "Go out: Loco or Voga?",
+        "color": "0xFF9D3E3E",
+        "answerOne": "Loco",
+        "answerTwo": "Voga",
+        "userName": "Bob",
+        "votesOne": 45,
+        "votesTwo": 55
+    },
+    {
+        "id": 4,
+        "question": "What makes more sense to learn: Python or JavaScript?",
+        "color": "0xFF4D855C",
+        "answerOne": "Python",
+        "answerTwo": "JavaScript",
+        "userName": "Alice",
+        "votesOne": 60,
+        "votesTwo": 40
+    },
+    {
+        "id": 5,
+        "question": "Travel to Paris or Tokyo for my vacation?",
+        "color": "0xFF43A6A6",
+        "answerOne": "Paris",
+        "answerTwo": "Tokyo",
+        "userName": "Sam",
+        "votesOne": 70,
+        "votesTwo": 80
+    },
+    {
+        "id": 6,
+        "question": "Should I invest in crypto or real estate?",
+        "color": "0xFF4977AC",
+        "answerOne": "Crypto",
+        "answerTwo": "Real Estate",
+        "userName": "Sally",
+        "votesOne": 85,
+        "votesTwo": 65
+    },
+    {
+        "id": 7,
+        "question": "Whats better: ski or snowboard?",
+        "color": "0xFFD29E37",
+        "answerOne": "Snowboard",
+        "answerTwo": "Ski",
+        "userName": "George",
+        "votesOne": 120,
+        "votesTwo": 130
+    }
+]
