@@ -55,7 +55,6 @@ var filesToCache = [
   'img/pin.svg',
   'img/profile.svg', 
   'img/pin_filled.svg',
-  'img/pin.svg',
   'img/simple_pin_filled.svg',
   'img/simple_pin_outline.svg'
 ];
