@@ -46,9 +46,6 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     <body>
         <div class="profileScreenContainer">
             <div class="topNav profile colored">
-                <div onClick="parent.location='index.html'">
-                    <img src="img/back.svg" alt="add poll" style="filter: invert(100%);">
-                </div>
                 <button id="editBtn" onClick="parent.location='editprofile.html'">edit</button>
             </div>  
             <div id="profileTopper" class="colored">
@@ -61,6 +58,18 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
             </div>   
             <label class="label myposts">my posts</label> 
         </div>
+        <div class="spacer"></div>
+        <div class="bottomNav">
+            <div class="bottomNavItem" onClick="parent.location='index.html'">
+              <img src="img/home.svg" alt="home">
+            </div>
+            <div class="bottomNavItem" onClick="parent.location='pins.html'">
+              <img src="img/pin.svg" alt="pin">
+            </div>
+            <div class="bottomNavItem activeNavItem">
+              <img src="img/profile.svg" alt="profile">
+            </div>
+          </div>
 
     <!-- Scripts -->
         <script src="use_serviceworker.js"></script>
