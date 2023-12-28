@@ -44,39 +44,43 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     </head>
 
     <body>
-        <div class="homeScreenContainer">
+        <div id="editProfileScreenContainer" class="homeScreenContainer">
             <div class="topNavWithBackButton">
-                <div onClick="parent.location='index.html'">
-                    <img src="img/back.svg" alt="add poll">
+                <div onClick="parent.location='profile.html'">
+                    <img src="img/back.svg" alt="add poll" style="filter: invert(100%);">
                 </div>
-                <h1>Create Poll</h1>
+                <h1 id="editProfileTitle">Edit Profile</h1>
             </div>
-            <form id="addPollForm">
-                <div class="addPollContainer">
-                    <label for="question" class="label">add question</label>
-                    <textarea id="question" name="question" maxlength="150" class="addPollInput" placeholder="type your question.."></textarea>
+            <form id="editProfileForm">
+                <div class="addPollContainer" id="iconContainer">
+                    <img class="icon" id="icon1" onClick="selectIcon(this)" src="img/icon1.svg">
+                    <img class="icon" id="icon2" onClick="selectIcon(this)" src="img/icon2.svg">
+                    <img class="icon" id="icon3" onClick="selectIcon(this)" src="img/icon3.svg">
+                    <img class="icon" id="icon4" onClick="selectIcon(this)" src="img/icon4.svg">
+                    <img class="icon" id="icon5" onClick="selectIcon(this)" src="img/icon5.svg">
+                    <img class="icon" id="icon6" onClick="selectIcon(this)" src="img/icon6.svg">
+                    <input type="hidden" id="selectedIconInput" name="icon" value="img/icon1.svg">
                 </div>
-                <div class="addPollContainer">
-                    <label class="label">add answers</label>
-                    <div id="answerContainer" >
-                        <input type="text" id="answerInput1" name="answerOne" maxlength="15" class="addPollInput" placeholder="first answer.."/>
-                        <input type="text" id="answerInput2" name="answerTwo" maxlength="15" class="addPollInput" placeholder="second answer.."/>
-                    </div>
+                <div class="addPollContainer" id="editProfileInputContainer">
+                        <input type="text" id="nameInput" name="name" maxlength="15" class="editProfileInput short"/>
+                        <input type="number" id="ageInput" name="age" maxlength="2" class="editProfileInput short"/>
+                        <textarea type="textarea" id="description" maxlength="200" name="description" class="editProfileInput long"></textarea>
                 </div>
                 <div id="colorContainer" class="addPollContainer">
                     <label class="label">choose color</label>
                     <div id="colorPalette">
-                        <div class="color" id="color1" onClick="selectColor(this)"></div>
-                        <div class="color" id="color2" onClick="selectColor(this)"></div>
-                        <div class="color" id="color3" onClick="selectColor(this)"></div>
-                        <div class="color" id="color4" onClick="selectColor(this)"></div>
-                        <div class="color" id="color5" onClick="selectColor(this)"></div>
-                        <div class="color" id="color6" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color1" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color2" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color3" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color4" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color5" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color6" onClick="selectColor(this)"></div>
                     </div>
                     <input type="hidden" id="selectedColorInput" name="color" value="color1">
                 </div>
-                <div id="submitPollButton" class="addPollContainer">
-                    <button type="submit" id="submitPoll">publish poll</button>
+                <div id="buttonContainer" class="addPollContainer">
+                    <button id="cancelButton" onClick="parent.location='profile.html'">cancel</button>
+                    <button type="submit" id="saveButton">save</button>
                 </div>
             </form>
         </div>
@@ -84,6 +88,6 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     <!-- Scripts -->
         <script src="use_serviceworker.js"></script>
         <script src="main.js"></script>
-        <script src="addPoll.js"></script>
+        <script src="editprofile.js"></script>
     </body>
 </html>
