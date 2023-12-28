@@ -1,0 +1,93 @@
+<!--
+AUTHORS: Müslüm Atas & Mathias Knoll
+DESCRIPTION: A simple Progressive Web App (PWA) example which uses web- and service-workers. 
+             It consists of HTML files (index.html, next.html) with basic CSS styling (style.css), a few images, and scripts.
+LAST CHANGE: 17.10.2023
+REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <title>Polly</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Manifest and Styles
+        The manifest file lists all the information about the website in a JSON format und usually resides in the root folder of a web app -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- App Name -->
+    <meta name="polly" content="polly" />
+    <!-- On iOS, you can specify a web application title for the launch icon -->
+    <meta name="polly" content="polly" />
+    <!-- Capability -->
+    <meta name="polly" content="yes" />
+    <!-- Hiding Safari User Interface Components in standalone mode-->
+    <meta name="polly" content="yes" />
+    <!-- Starting URL -->
+    <meta name="msapplication-starturl" content="/index.html" />
+    <!-- Theme/Display -->
+    <meta name="theme-color" content="white" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Icon for iOS 180x180 -->
+    <link rel="apple-touch-icon" href="img/touch-icon-iphone.png">
+    <!-- Splash Screens for iOS -->
+    <link href="img/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+    <link href="img/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+    </head>
+
+    <body>
+        <div id="editProfileScreenContainer" class="homeScreenContainer">
+            <div class="topNavWithBackButton">
+                <div onClick="parent.location='profile.html'">
+                    <img src="img/back.svg" alt="add poll" style="filter: invert(100%);">
+                </div>
+                <h1 id="editProfileTitle">Edit Profile</h1>
+            </div>
+            <form id="editProfileForm">
+                <div class="addPollContainer" id="iconContainer">
+                    <img class="icon" id="icon1" onClick="selectIcon(this)" src="img/icon1.svg">
+                    <img class="icon" id="icon2" onClick="selectIcon(this)" src="img/icon2.svg">
+                    <img class="icon" id="icon3" onClick="selectIcon(this)" src="img/icon3.svg">
+                    <img class="icon" id="icon4" onClick="selectIcon(this)" src="img/icon4.svg">
+                    <img class="icon" id="icon5" onClick="selectIcon(this)" src="img/icon5.svg">
+                    <img class="icon" id="icon6" onClick="selectIcon(this)" src="img/icon6.svg">
+                    <input type="hidden" id="selectedIconInput" name="icon" value="img/icon1.svg">
+                </div>
+                <div class="addPollContainer" id="editProfileInputContainer">
+                        <input type="text" id="nameInput" name="name" maxlength="15" class="editProfileInput short"/>
+                        <input type="number" id="ageInput" name="age" maxlength="2" class="editProfileInput short"/>
+                        <textarea type="textarea" id="description" maxlength="200" name="description" class="editProfileInput long"></textarea>
+                </div>
+                <div id="colorContainer" class="addPollContainer">
+                    <label class="label">choose color</label>
+                    <div id="colorPalette">
+                        <div class="color colorEditProfile" id="color1" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color2" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color3" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color4" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color5" onClick="selectColor(this)"></div>
+                        <div class="color colorEditProfile" id="color6" onClick="selectColor(this)"></div>
+                    </div>
+                    <input type="hidden" id="selectedColorInput" name="color" value="color1">
+                </div>
+                <div id="buttonContainer" class="addPollContainer">
+                    <button id="cancelButton" onClick="parent.location='profile.html'">cancel</button>
+                    <button type="submit" id="saveButton">save</button>
+                </div>
+            </form>
+        </div>
+
+    <!-- Scripts -->
+        <script src="use_serviceworker.js"></script>
+        <script src="main.js"></script>
+        <script src="editprofile.js"></script>
+    </body>
+</html>

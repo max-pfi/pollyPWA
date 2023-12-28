@@ -169,6 +169,316 @@ h1 {
     font-weight: 600;
 }
 
+.topNavWithBackButton {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    padding: 10px 20px;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.topNavWithBackButton h1 {
+    font-size: 25px;
+}
+
+#question {
+    height: 300px;
+    width: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#addPollForm {
+    height: 100%;
+}
+
+.addPollContainer {
+    flex-direction: column;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-inline: 20px;
+    row-gap: 10px;
+}
+
+#answerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 30px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#answerInput1, #answerInput2 {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+}
+
+.addPollInput {
+    background-color: rgba(210, 158, 55, 1);
+    color:    white;
+    align-items: center;
+    font-size: 16px;
+    padding-left: 10px;
+    border-color: transparent;
+}
+
+::-webkit-input-placeholder { 
+    color:    white;
+}
+
+.color {
+    background-color: rgba(210, 158, 55, 1);
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}
+
+#colorPalette {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    justify-content: space-between;
+}
+
+#submitPoll {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#iconContainer {
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+    margin-top: 10px;
+    margin-left: 75px;
+    margin-right: 75px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 70px;
+}
+
+.editProfileInput {
+    background-color: rgba(71, 71, 71, 1);
+    color:    white;
+    align-items: center;
+    font-size: 16px;
+    padding-left: 10px;
+    border-color: transparent;
+    border-radius: 20px;
+}
+
+#editProfileScreenContainer {
+    background-color: rgba(98, 98, 98, 1);
+    color: white;
+    height: 100vh;
+}
+
+#editProfileTitle {
+    color: white;
+    font-size: 25px;
+}
+
+.editProfileInput.short {
+    height: 30px;
+    text-align: center;
+}
+
+#editProfileInputContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-bottom: 25px;
+}
+
+.editProfileInput.long {
+    height: 200px;
+    width: 100%;
+}
+
+#cancelButton {
+    border-radius: 10px;
+    border-color: transparent;
+    width: 100%;
+    background-color: rgba(150, 150, 150, 1);
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    column-gap: 20px;
+    height: 30px;
+}
+
+#colorContainer {
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+#saveButton {
+    border-radius: 10px;
+    border-color: transparent;
+    width: 100%;
+    background-color: rgba(31, 31, 31, 1);
+    color: white;
+}
+
+.topNav.profile {
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+}
+
+#editBtn {
+    color: white;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#profileTopper {
+    color: white;
+    padding-top: 10px;
+    height: 250px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.icon.big {
+    height: 110px;
+    width: 110px;
+    border: none;
+    margin-bottom: 40px;
+}
+
+.userData {
+    padding: 0px;
+    margin: 5px;
+}
+
+#name {
+    font-weight: bold;
+}
+
+.label.myposts {
+    width: 100vw;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#description {
+    word-wrap: break-word;
+    padding: 20px;
+}
+
+.myPost {
+    height: 220px;
+    background-color: green;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+hr {
+    margin: 20px;
+    border: 3px solid black;
+    border-radius: 50px;
+    opacity: 50%;
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    color: white;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.postDescription {
+    min-height: 60px;
+}
+
+.verticalLine {
+    position: absolute;
+    margin-top: 143px;
+    height: 20px;
+    width: 4px;
+    background-color: black; 
+    opacity: 50%;
+    content: '';
+    left: calc(100vw / 2); 
+    border-radius: 30px;
+}
+
+.verticalLine.result {
+    background-color: white;
+    opacity: 100%;
+    width: 6px;
+}
+
+.postAnswer {
+    margin-inline: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.profileScreenContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.postDescription {
+    padding-inline: 20px;
+    color: white;
+    word-wrap: break-word;
+}
+
+#color1 {
+    background-color: rgba(157, 62, 62, 1);
+}
+
+#color2 {
+    background-color: rgba(210, 158, 55, 1);
+}
+
+#color3 {
+    background-color: rgba(164, 182, 93, 1);
+}
+
+#color4 {
+    background-color: rgba(77, 133, 92, 1);
+}
+
+#color5 {
+    background-color: rgba(67, 166, 166, 1);
+}
+
+#color6 {
+    background-color: rgba(73, 119, 172, 1);
+}
 #outOfPollsContainer {
     width: 100%;
     height: 100%;
@@ -264,3 +574,315 @@ h1 {
     width: 100vw;
 }
 
+
+
+.topNavWithBackButton {
+    height: 70px;
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    padding: 10px 20px;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.topNavWithBackButton h1 {
+    font-size: 25px;
+}
+
+#question {
+    height: 300px;
+    width: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#addPollForm {
+    height: 100%;
+}
+
+.addPollContainer {
+    flex-direction: column;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-inline: 20px;
+    row-gap: 10px;
+}
+
+#answerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 30px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#answerInput1, #answerInput2 {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+}
+
+.addPollInput {
+    background-color: rgba(210, 158, 55, 1);
+    color:    white;
+    align-items: center;
+    font-size: 16px;
+    padding-left: 10px;
+    border-color: transparent;
+}
+
+::-webkit-input-placeholder { 
+    color:    white;
+}
+
+.color {
+    background-color: rgba(210, 158, 55, 1);
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}
+
+#colorPalette {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    justify-content: space-between;
+}
+
+#submitPoll {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#iconContainer {
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+    margin-top: 10px;
+    margin-left: 75px;
+    margin-right: 75px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 70px;
+}
+
+.editProfileInput {
+    background-color: rgba(71, 71, 71, 1);
+    color:    white;
+    align-items: center;
+    font-size: 16px;
+    padding-left: 10px;
+    border-color: transparent;
+    border-radius: 20px;
+}
+
+#editProfileScreenContainer {
+    background-color: rgba(98, 98, 98, 1);
+    color: white;
+    height: 100vh;
+}
+
+#editProfileTitle {
+    color: white;
+    font-size: 25px;
+}
+
+.editProfileInput.short {
+    height: 30px;
+    text-align: center;
+}
+
+#editProfileInputContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-bottom: 25px;
+}
+
+.editProfileInput.long {
+    height: 200px;
+    width: 100%;
+}
+
+#cancelButton {
+    border-radius: 10px;
+    border-color: transparent;
+    width: 100%;
+    background-color: rgba(150, 150, 150, 1);
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    column-gap: 20px;
+    height: 30px;
+}
+
+#colorContainer {
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+#saveButton {
+    border-radius: 10px;
+    border-color: transparent;
+    width: 100%;
+    background-color: rgba(31, 31, 31, 1);
+    color: white;
+}
+
+.topNav.profile {
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+}
+
+#editBtn {
+    color: white;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#profileTopper {
+    color: white;
+    padding-top: 10px;
+    height: 250px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.icon.big {
+    height: 110px;
+    width: 110px;
+    border: none;
+    margin-bottom: 40px;
+}
+
+.userData {
+    padding: 0px;
+    margin: 5px;
+}
+
+#name {
+    font-weight: bold;
+}
+
+.label.myposts {
+    width: 100vw;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#description {
+    word-wrap: break-word;
+    padding: 20px;
+}
+
+.myPost {
+    height: 220px;
+    background-color: green;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+hr {
+    margin: 20px;
+    border: 3px solid black;
+    border-radius: 50px;
+    opacity: 50%;
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    color: white;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.postDescription {
+    min-height: 60px;
+}
+
+.verticalLine {
+    position: absolute;
+    margin-top: 143px;
+    height: 20px;
+    width: 4px;
+    background-color: black; 
+    opacity: 50%;
+    content: '';
+    left: calc(100vw / 2); 
+    border-radius: 30px;
+}
+
+.verticalLine.result {
+    background-color: white;
+    opacity: 100%;
+    width: 6px;
+}
+
+.postAnswer {
+    margin-inline: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.profileScreenContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.postDescription {
+    padding-inline: 20px;
+    color: white;
+    word-wrap: break-word;
+}
+
+#color1 {
+    background-color: rgba(157, 62, 62, 1);
+}
+
+#color2 {
+    background-color: rgba(210, 158, 55, 1);
+}
+
+#color3 {
+    background-color: rgba(164, 182, 93, 1);
+}
+
+#color4 {
+    background-color: rgba(77, 133, 92, 1);
+}
+
+#color5 {
+    background-color: rgba(67, 166, 166, 1);
+}
+
+#color6 {
+    background-color: rgba(73, 119, 172, 1);
+}
