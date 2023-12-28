@@ -63,6 +63,9 @@ h1 {
     flex-direction: row;
     background: #e6e6e6;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 .bottomNavItem {
@@ -747,7 +750,7 @@ hr {
 
 .topNav.profile {
     height: 40px;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     padding-top: 30px;
 }
@@ -886,3 +889,8 @@ hr {
 #color6 {
     background-color: rgba(73, 119, 172, 1);
 }
+
+.spacer {
+    margin-bottom: 100px;
+}
+
