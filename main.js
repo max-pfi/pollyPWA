@@ -28,7 +28,7 @@ let onDataFetched = null
 
 const worker = new Worker("webworker.js")
 
-async function getData(onDataFetchedCallback) {
+async function getData(onDataFetchedCallback = null) {
 
     onDataFetched = onDataFetchedCallback
 
@@ -37,7 +37,9 @@ async function getData(onDataFetchedCallback) {
         && localStorage.getItem("seenPolls") !== null
         && localStorage.getItem("user") !== null) {
         getFromLocalStorage()
-        onDataFetched()
+
+        if(onDataFetched !== null) 
+            onDataFetched()
     } else {
         worker.postMessage("init")
     }

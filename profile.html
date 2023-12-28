@@ -17,7 +17,6 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     <!-- Manifest and Styles
         The manifest file lists all the information about the website in a JSON format und usually resides in the root folder of a web app -->
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- App Name -->
     <meta name="polly" content="polly" />
@@ -45,40 +44,22 @@ REFERENCES: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
     </head>
 
     <body>
-        <div class="homeScreenContainer">
-            <div class="topNavWithBackButton">
+        <div class="profileScreenContainer">
+            <div class="topNav profile colored">
                 <div onClick="parent.location='index.html'">
-                    <img src="img/back.svg" alt="add poll">
+                    <img src="img/back.svg" alt="add poll" style="filter: invert(100%);">
                 </div>
-                <h1>Edit Profile</h1>
-            </div>
-            <form id="addPollForm">
-                <div class="addPollContainer">
-                    <label for="question" class="label">add question</label>
-                    <textarea id="question" class="addPollInput" placeholder="type your question.."></textarea>
-                </div>
-                <div class="addPollContainer">
-                    <label class="label">add answers</label>
-                    <div id="answerContainer" >
-                        <input type="text" id="answerInput1" maxlength="15" class="addPollInput" placeholder="first answer.."/>
-                        <input type="text" id="answerInput2" maxlength="15" class="addPollInput" placeholder="second answer.."/>
-                    </div>
-                </div>
-                <div id="colorContainer" class="addPollContainer">
-                    <label class="label">choose color</label>
-                    <div id="colorPalette">
-                        <div class="color" id="color1"></div>
-                        <div class="color" id="color1"></div>
-                        <div class="color" id="color1"></div>
-                        <div class="color" id="color1"></div>
-                        <div class="color" id="color1"></div>
-                        <div class="color" id="color1"></div>
-                    </div>
-                </div>
-                <div id="submitPollButton" class="addPollContainer">
-                    <button type="submit" id="submitPoll">publish poll</button>
-                </div>
-            </form>
+                <button id="editBtn" onClick="parent.location='editprofile.html'">edit</button>
+            </div>  
+            <div id="profileTopper" class="colored">
+                <img class="icon big" id="profileIcon">
+                <p id="name" class="userData">Pat</p>
+                <p id="age" class="userData">23y0</p>
+            </div>  
+            <div id="descriptionContainer" class="addPollContainer">
+                <p id="description" class="userData">I like to play soccer and I am looking for a team to play with.</p>
+            </div>   
+            <label class="label myposts">my posts</label> 
         </div>
 
     <!-- Scripts -->
